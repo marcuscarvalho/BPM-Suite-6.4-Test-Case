@@ -45,7 +45,7 @@ KIE_CRED=$KIE_USER:$KIE_PWD
 PROJECT_GAV=$PROJECT_GROUP:$PROJECT_ARTIFACT:$PROJECT_ID
 ```
  
-Build the project
+Download project "repository1Test__2_.zip (617.6 kB)" from Support Case and build it
 -----------------
 
 ```bash
@@ -88,15 +88,15 @@ Create container
 curl -v -X POST -H 'Content-type: application/xml' -H 'X-KIE-Content-Type: xstream' -d @create-container.xml -u ${KIE_CRED} http://${HOST}:${PORT}/kie-server/services/rest/server/config/
 ```
  
-WORKING
--------
+Working payload
+---------------
 
 ```bash
 {\"pProductType\":\"SJC\", \"pPriority\":\"NORM\", \"pItemLocation\":\"SJC1\", \"pNotificationStatus\":\"ACPT\", \"pReturnToSenderState\":\"false\", \"pOriginalMOIBranchID\":\"SJC1\", \"pDestination\":\"B1\", \"pZoneID\":\"6\", \"pDeliveryPreference\":\"Address\", \"pDestinationCountry\":\"QA\"}
 PROCID=`curl -s -X POST -H 'Content-type: application/json' -H 'X-KIE-Content-Type: json' -d "{\"pProductType\":\"SJC\", \"pPriority\":\"NORM\", \"pItemLocation\":\"SJC1\", \"pNotificationStatus\":\"ACPT\", \"pReturnToSenderState\":\"false\", \"pOriginalMOIBranchID\":\"SJC1\", \"pDestination\":\"B1\", \"pZoneID\":\"6\", \"pDeliveryPreference\":\"Address\", \"pDestinationCountry\":\"QA\"}" -u ${KIE_CRED} http://${HOST}:${PORT}/kie-server/services/rest/server/containers/${PROJECT_GAV}/processes/${PROCESS_NAME}/instances` && echo Process ${PROCID} created for process ${PROCESS_NAME}
 ```
  
-NON WORKING
+Not Working
 -----------
 
 ```bash
