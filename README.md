@@ -6,8 +6,8 @@ Download files below into project's root directory
 
 * [jboss-eap-7.0.0.zip](https://access.redhat.com/jbossnetwork/restricted/softwareDownload.html?softwareId=43891)
 * [jboss-eap-7.0.9-patch.zip](https://access.redhat.com/jbossnetwork/restricted/softwareDownload.html?softwareId=55651)
-* jboss-bpmsuite-6.4.0.GA-deployable-eap7.x.zip
-* jboss-bpmsuite-6.4.11-patch.zip
+* [jboss-bpmsuite-6.4.0.GA-deployable-eap7.x.zip](https://access.redhat.com/jbossnetwork/restricted/softwareDownload.html?softwareId=48441)
+* [jboss-bpmsuite-6.4.11-patch.zip](https://access.redhat.com/jbossnetwork/restricted/softwareDownload.html?softwareId=60561)
 
 Start
 -----
