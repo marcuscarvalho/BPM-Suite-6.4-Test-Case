@@ -24,7 +24,8 @@ Browse to http://localhost:8080/business-central[http://localhost:8080/business-
 User: kieserver
 Pass: kieserver1!
 
-# config section - change as needed
+Config section
+---------------------------------
 HOST=localhost
 PORT=8080
  
@@ -38,19 +39,19 @@ PROJECT_ID=1.0.0
 PROCESS_NAME=SampleProcess.SampleBusinessRuleProcess
 RUNTIME_STRATEGY=PER_PROCESS_INSTANCE
  
-# no need to change here
 KIE_CRED=$KIE_USER:$KIE_PWD
 PROJECT_GAV=$PROJECT_GROUP:$PROJECT_ARTIFACT:$PROJECT_ID
  
-# build the project
+Build the project
+-----------------
 (cd repository1Test/SampleProcess/ && mvn clean install)
  
- 
-# Delete container
+Delete container
+----------------
 curl -v -X DELETE -u ${KIE_CRED} http://${HOST}:${PORT}/kie-server/services/rest/server/containers/${PROJECT_GAV}
  
- 
-# Create container template:
+Create container template
+-------------------------
 echo '<script>' > create-container.xml
 echo '  <create-container>' >> create-container.xml
 echo '    <container container-id="'${PROJECT_GAV}'">' >> create-container.xml
@@ -68,13 +69,13 @@ echo '    </container>' >> create-container.xml
 echo '  </create-container>' >> create-container.xml
 echo '</script>' >> create-container.xml
  
-# Create container:
+Create container
+----------------
 curl -v -X POST -H 'Content-type: application/xml' -H 'X-KIE-Content-Type: xstream' -d @create-container.xml -u ${KIE_CRED} http://${HOST}:${PORT}/kie-server/services/rest/server/config/
  
 # WORKING
 #{\"pProductType\":\"SJC\", \"pPriority\":\"NORM\", \"pItemLocation\":\"SJC1\", \"pNotificationStatus\":\"ACPT\", \"pReturnToSenderState\":\"false\", \"pOriginalMOIBranchID\":\"SJC1\", \"pDestination\":\"B1\", \"pZoneID\":\"6\", \"pDeliveryPreference\":\"Address\", \"pDestinationCountry\":\"QA\"}
 PROCID=`curl -s -X POST -H 'Content-type: application/json' -H 'X-KIE-Content-Type: json' -d "{\"pProductType\":\"SJC\", \"pPriority\":\"NORM\", \"pItemLocation\":\"SJC1\", \"pNotificationStatus\":\"ACPT\", \"pReturnToSenderState\":\"false\", \"pOriginalMOIBranchID\":\"SJC1\", \"pDestination\":\"B1\", \"pZoneID\":\"6\", \"pDeliveryPreference\":\"Address\", \"pDestinationCountry\":\"QA\"}" -u ${KIE_CRED} http://${HOST}:${PORT}/kie-server/services/rest/server/containers/${PROJECT_GAV}/processes/${PROCESS_NAME}/instances` && echo Process ${PROCID} created for process ${PROCESS_NAME}
- 
  
 # NON WORKING
 PROCID=`curl -s -X POST -H 'Content-type: application/json' -H 'X-KIE-Content-Type: json' -d "{\"pProductType\":\"SJC\", \"pPriority\":\"NORM\", \"pItemLocation\":\"B1\", \"pNotificationStatus\":\"ACPT\", \"pReturnToSenderState\":\"false\", \"pOriginalMOIBranchID\":\"SJC1\", \"pDestination\":{\"buildingNo\":\"0\", \"postalCode\":\"0\", \"streetNumber\":\"0\", \"zone\":\"6\"}, \"pZoneID\":\"6\", \"pDeliveryPreference\":\"Address\", \"pDestinationCountry\":\"QA\"}" -u ${KIE_CRED} http://${HOST}:${PORT}/kie-server/services/rest/server/containers/${PROJECT_GAV}/processes/${PROCESS_NAME}/instances` && echo Process ${PROCID} created for process ${PROCESS_NAME}
