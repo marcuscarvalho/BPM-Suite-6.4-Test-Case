@@ -19,10 +19,8 @@ $ docker-compose up --build
 
 JBoss BPMS
 ----------
-Browse to http://localhost:8080/business-central[http://localhost:8080/business-central]
 
-User: kieserver
-Pass: kieserver1!
+Running context: http://localhost:8080/business-central
 
 Config section
 ---------------------------------
