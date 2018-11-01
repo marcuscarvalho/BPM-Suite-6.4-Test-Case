@@ -2,7 +2,7 @@
 
 Before start
 ------------
-Download files below and put in Dockerfile directory.
+Download files below into project's root directory
 
 * jboss-eap-7.0.0.zip
 * jboss-eap-7.0.9-patch.zip
