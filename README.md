@@ -44,7 +44,7 @@ PROJECT_GAV=$PROJECT_GROUP:$PROJECT_ARTIFACT:$PROJECT_ID
  
 Build the project
 -----------------
-(cd repository1Test/SampleProcess/ && mvn clean install)
+cd repository1Test/SampleProcess/ && mvn clean install
  
 Delete container
 ----------------
