@@ -1,0 +1,10 @@
+version: '3'
+services:
+  jboss-bpms:
+    build: .
+    image: jboss-bpms:6.4.11
+    ports:
+    - "8080:8080"
+    - "9990:9990"
+    - "8001:8001"
+    - "9418:9418"
